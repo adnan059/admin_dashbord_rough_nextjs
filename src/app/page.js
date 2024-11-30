@@ -1,95 +1,97 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { auth } from "@/auth";
+import { IoMdHome } from "react-icons/io";
 
-export default function Home() {
+export default async function RootHome() {
+  const session = await auth();
+  //console.log(session);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <div className="dashboard">
+      <div className="titledashboard flex flex-sb">
+        <div>
+          <h2>
+            Blogs <span>Dashboard</span>
+          </h2>
+          <h3>Admin Panel</h3>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="breadcrumb">
+          <IoMdHome /> <span>/</span> <span>Dashboard</span>
+        </div>
+      </div>
+
+      <div className="topfourcards flex flex-sb">
+        <div className="four_card">
+          <h2>Total Blogs</h2>
+          <span>10</span>
+        </div>
+        <div className="four_card">
+          <h2>Total Topics</h2>
+          <span>10</span>
+        </div>
+        <div className="four_card">
+          <h2>Total Tags</h2>
+          <span>10</span>
+        </div>
+        <div className="four_card">
+          <h2>Total Draft</h2>
+          <span>10</span>
+        </div>
+      </div>
+
+      <div className="year_overview flex flex-sb">
+        <div className="leftyearoverview">
+          <div className="flex flex-sb">
+            <h3>Year Overview</h3>
+            <ul className="creative-dots">
+              <li className="big-dot"></li>
+              <li className="semi-big-dot"></li>
+              <li className="medium-dot"></li>
+            </ul>
+            <h3 className="text-right">
+              10 / 365 <br /> <span>Total Published</span>
+            </h3>
+          </div>
+          {/* chart pending */}
+        </div>
+        <div className="right_salescont">
+          <div>
+            <h3>Blogs By Category</h3>
+            <ul className="creative-dots">
+              <li className="big-dot"></li>
+              <li className="semi-big-dot"></li>
+              <li className="medium-dot"></li>
+            </ul>
+          </div>
+          <div className="blogscategory flex flex-center">
+            <table>
+              <thead>
+                <tr>
+                  <td>Topics</td>
+                  <td>Data</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HTML, CSS & JavaScript</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>Next.js & React.js</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>Database</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>Deployment</td>
+                  <td>10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
